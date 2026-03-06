@@ -1,0 +1,56 @@
+m255
+K4
+z2
+Z0 !s12c _opt
+Z1 !s99 nomlopt
+R0
+R1
+!s11f vlog 2025.2 2025.05, May 31 2025
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Baþaran/AppData/Local/quartus
+T_opt
+!i145 1
+!i144 0
+!s110 1772826315
+VHfQAP6zI:J`L>]D[WS8OA1
+04 11 4 work traffic_fsm fast 0
+=1-4c1d967fef04-69ab2eca-38d-5674
+R1
+!s12f OEM100
+!s12b OEM100
+!s124 OEM10U1 
+!s135 nogc
+o-quiet -auto_acc_if_foreign -work work
+tCvgOpt 0 defaultOptions 1107585188
+n@_opt
+OL;O;2025.2;82
+vtraffic_fsm
+2C:/Projects/Traffic-Light-FSM/Traffic_Light_FSM.sv
+DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
+!s110 1772826298
+!i10b 1
+!s100 T8OBUXn;6oO8IW`Kfa[kG1
+I12;_;IcoI3k;7G3l7AI5o1
+S1
+dC:/Projects/Traffic-Light-FSM
+w1772826293
+8C:/Projects/Traffic-Light-FSM/Traffic_Light_FSM.sv
+FC:/Projects/Traffic-Light-FSM/Traffic_Light_FSM.sv
+!i122 2
+L0 1 88
+VDg1SIo80bB@j0V0VzS_@n1
+OL;L;2025.2;82
+r1
+!s85 0
+31
+!s108 1772826298.000000
+!s107 C:/Projects/Traffic-Light-FSM/Traffic_Light_FSM.sv|
+!s90 -reportprogress|300|-work|work|-vopt|-sv|-stats=none|C:/Projects/Traffic-Light-FSM/Traffic_Light_FSM.sv|
+!i113 0
+o-work work -sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+tCvgOpt 0 defaultOptions 1085333592

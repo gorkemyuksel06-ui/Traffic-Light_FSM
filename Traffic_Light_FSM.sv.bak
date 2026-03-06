@@ -1,0 +1,47 @@
+module traffic_fsm (
+    input  logic clk,
+    input  logic reset,
+    input  logic TAORB, // 1: A yolu dolu, 0: B yolu dolu
+    output logic [2:0] LA, // [K?rm?z?, Sar?, Ye?il]
+    output logic [2:0] LB
+);
+
+    // Durum tan?mlar?
+    typedef enum logic [1:0] {
+        S0, // LA: Ye?il,  LB: K?rm?z? (A'da araba var)
+        S1, // LA: Sar?,   LB: K?rm?z? (A'dan B'ye geçi?)
+        S2, // LA: K?rm?z?, LB: Ye?il  (B'de araba var)
+        S3  // LA: K?rm?z?, LB: Sar?   (B'den A'ya geçi?)
+    } state_t;
+
+    state_t current_state, next_state;
+
+    // Durum Kaydedicisi (State Register)
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset) current_state <= S0;
+        else       current_state <= next_state;
+    end
+
+    // Gelecek Durum Mant??? (Next State Logic)
+    always_comb begin
+        next_state = current_state;
+        case (current_state)
+            S0: if (!TAORB) next_state = S1; // A'da araba bittiyse sar?ya geç
+            S1: next_state = S2;             // Beklemeden B'ye geç
+            S2: if (TAORB)  next_state = S3; // B'da araba bittiyse sar?ya geç
+            S3: next_state = S0;             // Beklemeden A'ya geç
+            default: next_state = S0;
+        endcase
+    end
+
+    // Ç?k?? Mant??? (Output Logic)
+    always_comb begin
+        LA = 3'b100; LB = 3'b100; // Varsay?lan K?rm?z?
+        case (current_state)
+            S0: begin LA = 3'b001; LB = 3'b100; end // A Ye?il
+            S1: begin LA = 3'b010; LB = 3'b100; end // A Sar?
+            S2: begin LA = 3'b100; LB = 3'b001; end // B Ye?il
+            S3: begin LA = 3'b100; LB = 3'b010; end // B Sar?
+        endcase
+    end
+endmodule
